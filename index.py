@@ -55,44 +55,77 @@ for char in cipher:
 
 
 #### CALCULATING BIGRAM FREQUENCIES
-'''bigram_count = {}
+bigram_count = {}
 
 prev_char = None
-for cipher_char in plain_text:
+for cipher_char in cipher:
     cipher_char = cipher_char.upper() 
     if prev_char is not None and prev_char.isalpha() and cipher_char.isalpha():
         if prev_char + cipher_char in bigram_count:
             bigram_count[prev_char + cipher_char] += 1
         else:
             bigram_count[prev_char + cipher_char] = 1
-    prev_char = cipher_char  '''
+    prev_char = cipher_char
+
+print("BIGRAM DICT-----")
+print(dict(sorted(bigram_count.items(), key=lambda item: item[1], reverse=True)))
 
 print("ALPHA DICT-----")
 print(dict(sorted(frequency_alphabet.items(), key=lambda item: item[1], reverse=True)))
 print("CIPHER DICT-----")
 print(dict(sorted(char_frequencies.items(), key=lambda item: item[1], reverse=True)))
+
+print("-------------------------")
+print("CIPHER")
 print(cipher)
 
 plain_text = ""
 
 decode_dict = {
+    #BIGRAM
+    "h": "T",
+    "k": "H",
+
+    #SINGLE
+    "b": "O",
     "a": "E",
-    "h": "A",
-    "j": "R"
+    "p": "A",
+    "c": "R",
+    "x": "L",
+    "u": "S",
+    "g": "Y",
+    "i": "M",
+    "l": "B",
+    "n": "I",
+    "z": "F",
+    "d": "Q",
+    "r": "U",
+    "m": "C",
+    "j": "N",
+    "e": "P",
+    "y": "X",
+    "o": "G",
+    "q": "D",
+    "v": "W",
+    "t": "Z",
+    "s": "K",
+    "f": "V"
+
 }
 
 for char in cipher:
     char = char.lower()
     if char.isalpha() and char in decode_dict:
-        plain_text += decode_dict[char]
+        if char.isupper:
+            plain_text += decode_dict[char]
+        else:
+            plain_text += decode_dict[char].lower()
     else:
         plain_text += char
 
 
 print("-------------------------")
+print("PLAINTEXT")
 print(plain_text)
 
-#print(cipher.replace("a", "e").replace("p", "o").replace("u", "n").replace("h", "a").replace("b", "s").replace("k", "r"))
-'''print(dict(sorted(bigram_count.items(), key=lambda item: item[1], reverse=True)))
-print(plain_text.lower().replace("ee","th"))'''
 
