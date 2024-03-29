@@ -77,9 +77,13 @@ decode_dict = {
     "p": "O", 
     "u": "N", 
     "h": "A", 
-    "b": "T", 
+    #"b": "T", 
     "z": "O",
-    "k": "R"
+    "k": "R",
+    "x": "L",
+    #"e": "Y",
+    "j": "V",
+    "m": ""
 }
 
 for char in cipher:
