@@ -67,23 +67,18 @@ for cipher_char in plain_text:
             bigram_count[prev_char + cipher_char] = 1
     prev_char = cipher_char  '''
 
+print("ALPHA DICT-----")
+print(dict(sorted(frequency_alphabet.items(), key=lambda item: item[1], reverse=True)))
+print("CIPHER DICT-----")
 print(dict(sorted(char_frequencies.items(), key=lambda item: item[1], reverse=True)))
 print(cipher)
 
 plain_text = ""
 
 decode_dict = {
-    "a": "E", 
-    "p": "O", 
-    "u": "N", 
-    "h": "A", 
-    #"b": "T", 
-    "z": "O",
-    "k": "R",
-    "x": "L",
-    #"e": "Y",
-    "j": "V",
-    "m": ""
+    "a": "E",
+    "h": "A",
+    "j": "R"
 }
 
 for char in cipher:
